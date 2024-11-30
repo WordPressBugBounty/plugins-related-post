@@ -344,8 +344,15 @@ function related_post_excerpt_display_auto($excerpt)
 
 function related_post_ajax_get_post_ids()
 {
-
     $response = array();
+    if (! current_user_can('manage_options')) {
+
+        $response['html'] = __("Sorry you are not allowed to do that", "related-post");
+        echo json_encode($response);
+
+        die();
+    }
+
     $post_id     = isset($_POST['post_id']) ? (int)sanitize_text_field($_POST['post_id']) : '';
     $title     = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
     $any_posttypes     = isset($_POST['any_posttypes']) ? sanitize_text_field($_POST['any_posttypes']) : '';
@@ -384,7 +391,6 @@ function related_post_ajax_get_post_ids()
 }
 
 add_action('wp_ajax_related_post_ajax_get_post_ids', 'related_post_ajax_get_post_ids');
-add_action('wp_ajax_nopriv_related_post_ajax_get_post_ids', 'related_post_ajax_get_post_ids');
 
 
 
