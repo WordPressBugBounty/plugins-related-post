@@ -4,7 +4,7 @@
 	Tags: related post, related posts, related content, inline related post,  similar posts
 	Requires at least: 3.8
 	Tested up to: 6.7
-	Stable tag: 2.0.59
+	Stable tag: 2.0.60
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,8 @@ echo do_shortcode( '[related_post post_id=""]' );
 
 == Changelog ==
 
+	= 2.0.60 =
+    * 2024-03-06 fix - Escape issue fixed on setting page.
 
 	= 2.0.59 =
     * 2024-11-30 fix - Minor security issue fixed.
