@@ -191,7 +191,7 @@ $related_post_settings = get_option('related_post_settings');
 
                 ?>
                     <li <?php if (!empty($data_visible)):  ?> data_visible="<?php echo esc_attr($data_visible); ?>" <?php endif; ?> class="tab-nav <?php if ($hidden) echo 'hidden'; ?> <?php if ($active) echo 'active'; ?>" data-id="<?php echo esc_attr($id); ?>">
-                        <?php echo esc_html($title); ?>
+                        <?php echo wp_kses_post($title); ?>
                         <?php
                         if ($is_pro):
                         ?><span class="pro-feature"><?php echo esc_html($pro_text); ?></span> <?php
