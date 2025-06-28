@@ -36,7 +36,6 @@ class class_related_post_post_meta
                 }
             }
 
-            error_log(serialize($manual_post_types));
         }
 
 

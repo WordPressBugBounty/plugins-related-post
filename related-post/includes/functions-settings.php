@@ -105,6 +105,7 @@ if (!function_exists('related_post_settings_content_general')) {
                         $enable = isset($post_types_display[$post_type]['enable']) ? $post_types_display[$post_type]['enable'] : 'no';
                         $content_position = isset($post_types_display[$post_type]['content_position']) ? $post_types_display[$post_type]['content_position'] : array();
                         $excerpt_position = isset($post_types_display[$post_type]['excerpt_position']) ? $post_types_display[$post_type]['excerpt_position'] : array();
+                        $comment_form_position = isset($post_types_display[$post_type]['comment_form_position']) ? $post_types_display[$post_type]['comment_form_position'] : array();
                         $inclued_taxonomies = isset($post_types_display[$post_type]['inclued_taxonomies']) ? $post_types_display[$post_type]['inclued_taxonomies'] : array();
                         $tax_realtion = isset($post_types_display[$post_type]['tax_realtion']) ? $post_types_display[$post_type]['tax_realtion'] : 'OR';
                         $manual_post = isset($post_types_display[$post_type]['manual_post']) ? $post_types_display[$post_type]['manual_post'] : 'no';
@@ -199,6 +200,22 @@ if (!function_exists('related_post_settings_content_general')) {
                                 'details'    => __('Display before or after excerpt.', 'related-post'),
                                 'type'        => 'checkbox',
                                 'value'        => $excerpt_position,
+                                'default'        => [],
+                                'style'        => array('inline' => true),
+                                'args'        => array('before' => 'Before', 'after' => 'After'),
+
+                            );
+
+                            $pickp_settings_tabs_field->generate_field($args);
+
+
+                            $args = array(
+                                'id'        => 'comment_form_position',
+                                'parent'        => 'related_post_settings[post_types_display][' . $post_type . ']',
+                                'title'        => __('Comment form positions', 'related-post'),
+                                'details'    => __('Display before or after excerpt.', 'related-post'),
+                                'type'        => 'checkbox',
+                                'value'        => $comment_form_position,
                                 'default'        => [],
                                 'style'        => array('inline' => true),
                                 'args'        => array('before' => 'Before', 'after' => 'After'),

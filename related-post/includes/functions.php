@@ -18,6 +18,7 @@ function related_post_recursive_sanitize_arr($array)
 }
 
 
+
 add_action('the_content', 'related_post_display_auto');
 
 function related_post_display_auto($content)
@@ -182,6 +183,67 @@ function related_post_display_on_excerpt($excerpt)
         return $html;
     } else {
         return $excerpt;
+    }
+
+    //var_dump($post_types_display);
+
+}
+
+add_action('comment_form_before', 'related_post_display_comment_form_before');
+
+function related_post_display_comment_form_before($excerpt)
+{
+
+    $related_post_settings = get_option('related_post_settings');
+
+    $post_types_display = isset($related_post_settings['post_types_display']) ? $related_post_settings['post_types_display'] : array();
+
+
+    global $post;
+    $posttype = isset($post->post_type) ? $post->post_type : '';
+    $enable = isset($post_types_display[$posttype]['enable']) ? $post_types_display[$posttype]['enable'] : 'no';
+
+    if ($enable == 'yes') {
+
+        $comment_form_position = isset($post_types_display[$posttype]['comment_form_position']) ? $post_types_display[$posttype]['comment_form_position'] : [];
+        $headline_text = isset($post_types_display[$posttype]['headline_text']) ? $post_types_display[$posttype]['headline_text'] : '';
+        $view_type = isset($post_types_display[$posttype]['view_type']) ? $post_types_display[$posttype]['view_type'] : '';
+
+
+        if (in_array('before', $comment_form_position)) {
+
+            echo do_shortcode('[related_post post_id="' . get_the_id() . '" view_type="' . $view_type . '" headline="' . $headline_text . '"]');
+        }
+    }
+
+    //var_dump($post_types_display);
+
+}
+
+add_action('comment_form_after', 'related_post_display_comment_form_after');
+
+function related_post_display_comment_form_after($excerpt)
+{
+
+    $related_post_settings = get_option('related_post_settings');
+
+    $post_types_display = isset($related_post_settings['post_types_display']) ? $related_post_settings['post_types_display'] : array();
+
+
+    global $post;
+    $posttype = isset($post->post_type) ? $post->post_type : '';
+    $enable = isset($post_types_display[$posttype]['enable']) ? $post_types_display[$posttype]['enable'] : 'no';
+
+    if ($enable == 'yes') {
+
+        $comment_form_position = isset($post_types_display[$posttype]['comment_form_position']) ? $post_types_display[$posttype]['comment_form_position'] : [];
+        $headline_text = isset($post_types_display[$posttype]['headline_text']) ? $post_types_display[$posttype]['headline_text'] : '';
+        $view_type = isset($post_types_display[$posttype]['view_type']) ? $post_types_display[$posttype]['view_type'] : '';
+
+        if (in_array('after', $comment_form_position)) {
+
+            echo do_shortcode('[related_post post_id="' . get_the_id() . '" view_type="' . $view_type . '" headline="' . $headline_text . '"]');
+        }
     }
 
     //var_dump($post_types_display);
