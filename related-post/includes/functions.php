@@ -420,7 +420,7 @@ function related_post_ajax_get_post_ids()
     $any_posttypes     = isset($_POST['any_posttypes']) ? sanitize_text_field($_POST['any_posttypes']) : '';
 
     $post_type = get_post_type($post_id);
-    $args = array('post_type' => !empty($any_posttypes) ? 'any' : array($post_type), 's' => $title, 'post__not_in' => array($post_id), 'posts_per_page' => 10);
+    $args = array('post_type' => !empty($any_posttypes) ? 'any' : array($post_type), 's' => $title, 'post__not_in' => array($post_id), 'posts_per_page' => -1, 'post_status' => 'publish',);
     $wp_query = new WP_Query($args);
 
     ob_start();

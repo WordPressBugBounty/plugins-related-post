@@ -3,7 +3,7 @@
 Plugin Name: Related Post
 Plugin URI: http://wordpress.org/plugins/related-post/
 Description: Display related posts under post content on single page and excerpt on archive pages.
-Version: 2.0.62
+Version: 2.0.63
 Author: PickPlugins
 Author URI: http://pickplugins.com
 License: GPLv2 or later
