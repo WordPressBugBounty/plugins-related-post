@@ -13,7 +13,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
         //delete_option('related_post_settings');
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -52,8 +52,8 @@ if (!function_exists('related_post_settings_content_general')) {
 
 ?>
         <div class="section">
-            <div class="section-title"><?php echo __('General settings', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Choose some general option to getting started.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('General settings', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Choose some general option to getting started.', 'related-post'); ?></p>
 
             <?php
 
@@ -138,27 +138,27 @@ if (!function_exists('related_post_settings_content_general')) {
                             <?php
                             if ($enable == 'yes') :
                             ?>
-                                <span title="<?php echo __('Enable', 'related-post'); ?>" class="is-enable ">
+                                <span title="<?php esc_html_e('Enable', 'related-post'); ?>" class="is-enable ">
                                     <i class="fa fa-check-square"></i>
                                 </span>
                             <?php
                             else :
                             ?>
-                                <span title="<?php echo __('Disabled', 'related-post'); ?>" class="is-enable ">
+                                <span title="<?php esc_html_e('Disabled', 'related-post'); ?>" class="is-enable ">
                                     <i class="fa fa-times-circle"></i>
                                 </span>
                             <?php
                             endif;
                             ?>
-                            <span title="<?php echo __('Click to expand', 'related-post'); ?>" class="expand ">
-                                <?php echo $post_name; ?>
+                            <span title="<?php esc_html_e('Click to expand', 'related-post'); ?>" class="expand ">
+                                <?php echo esc_html($post_name); ?>
                             </span>
 
 
                         </div>
-                        <input type="hidden" name="related_post_settings[post_types_display][<?php echo $post_type; ?>][name]" value="<?php echo $post_type; ?>" />
+                        <input type="hidden" name="related_post_settings[post_types_display][<?php echo esc_attr($post_type); ?>][name]" value="<?php echo esc_attr($post_type); ?>" />
                         <div class="options">
-                            <div class="description"><?php echo $description; ?></div><br /><br />
+                            <div class="description"><?php echo esc_html($description); ?></div><br /><br />
 
                             <?php
 
@@ -166,6 +166,7 @@ if (!function_exists('related_post_settings_content_general')) {
                                 'id'        => 'enable',
                                 'parent'        => 'related_post_settings[post_types_display][' . $post_type . ']',
                                 'title'        => __('Enable?', 'related-post'),
+                                /* translators: %s: Post Type */
                                 'details'    => sprintf(__('Enable or disable related post automatically for %s.', 'related-post'), $post_type),
                                 'type'        => 'select',
                                 'value'        => $enable,
@@ -175,7 +176,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $args = array(
@@ -191,7 +192,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
                             $args = array(
                                 'id'        => 'excerpt_position',
@@ -206,7 +207,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $args = array(
@@ -222,7 +223,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
 
@@ -239,7 +240,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $args = array(
@@ -255,7 +256,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
 
@@ -273,7 +274,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $args = array(
@@ -287,7 +288,7 @@ if (!function_exists('related_post_settings_content_general')) {
                                 'placeholder'        => '1,2,N-1',
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
 
@@ -302,7 +303,7 @@ if (!function_exists('related_post_settings_content_general')) {
                                 'placeholder'        => '',
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $args = array(
@@ -318,7 +319,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                             );
 
-                            $pickp_settings_tabs_field->generate_field($args);
+                            $settings_tabs_field->generate_field($args);
 
 
                             $active_plugins = get_option('active_plugins');
@@ -338,7 +339,7 @@ if (!function_exists('related_post_settings_content_general')) {
 
                                 );
 
-                                $pickp_settings_tabs_field->generate_field($args);
+                                $settings_tabs_field->generate_field($args);
                             }
 
 
@@ -379,7 +380,7 @@ if (!function_exists('related_post_settings_content_general')) {
                 'html'        => $html,
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -439,7 +440,7 @@ border:1px solid #999;
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -460,7 +461,7 @@ if (!function_exists('related_post_settings_content_style')) {
     function related_post_settings_content_style($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -478,8 +479,8 @@ if (!function_exists('related_post_settings_content_style')) {
         //delete_option('related_post_settings');
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Style settings', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Choose & customize style settings.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Style settings', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Choose & customize style settings.', 'related-post'); ?></p>
 
             <?php
 
@@ -494,7 +495,7 @@ if (!function_exists('related_post_settings_content_style')) {
                 'args'        => array('grid' => __('Grid', 'related-post'), 'slider' => __('Slider', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -540,7 +541,7 @@ if (!function_exists('related_post_settings_content_style')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -561,7 +562,7 @@ if (!function_exists('related_post_settings_content_style')) {
                 'placeholder'   => '5px 10px',
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'grid_item_padding',
@@ -574,7 +575,7 @@ if (!function_exists('related_post_settings_content_style')) {
                 'placeholder'   => '5px 10px',
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'grid_item_align',
@@ -587,7 +588,7 @@ if (!function_exists('related_post_settings_content_style')) {
                 'args'        => array('left' => __('Left', 'related-post'), 'center' => __('Center', 'related-post'), 'right' => __('Right', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'font_aw_version',
@@ -600,7 +601,7 @@ if (!function_exists('related_post_settings_content_style')) {
                 'args'        => array('v_5' => __('Version 5+', 'related-post'), 'v_4' => __('Version 4+', 'related-post'), 'none' => __('None', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             ?>
@@ -620,7 +621,7 @@ if (!function_exists('related_post_settings_content_query')) {
     function related_post_settings_content_query($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -632,8 +633,8 @@ if (!function_exists('related_post_settings_content_query')) {
         //delete_option('related_post_settings');
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Post query settings', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Choose post query settings.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Post query settings', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Choose post query settings.', 'related-post'); ?></p>
 
             <?php
 
@@ -661,7 +662,7 @@ if (!function_exists('related_post_settings_content_query')) {
                 ),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'order',
@@ -674,7 +675,7 @@ if (!function_exists('related_post_settings_content_query')) {
                 'args'        => array('DESC' => __('Descending', 'related-post'), 'ASC' => __('Ascending', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -688,7 +689,7 @@ if (!function_exists('related_post_settings_content_query')) {
                 'default'        => '5',
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -714,7 +715,7 @@ if (!function_exists('related_post_settings_content_elements')) {
     function related_post_settings_content_elements($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -731,8 +732,8 @@ if (!function_exists('related_post_settings_content_elements')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Elements', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Customize post elements.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Elements', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Customize post elements.', 'related-post'); ?></p>
 
             <?php
             $get_intermediate_image_sizes =  get_intermediate_image_sizes();
@@ -1093,7 +1094,7 @@ if (!function_exists('related_post_settings_content_elements')) {
                 ),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1118,7 +1119,7 @@ if (!function_exists('related_post_settings_content_slider')) {
     function related_post_settings_content_slider($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
         $slider_column_number_desktop = isset($related_post_settings['slider']['column_desktop']) ? $related_post_settings['slider']['column_desktop'] : 3;
@@ -1145,8 +1146,8 @@ if (!function_exists('related_post_settings_content_slider')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Slider settings', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Choose slider settings.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Slider settings', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Choose slider settings.', 'related-post'); ?></p>
 
             <?php
 
@@ -1190,7 +1191,7 @@ if (!function_exists('related_post_settings_content_slider')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1206,7 +1207,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'placeholder'   => '1000',
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'pagination_speed',
@@ -1219,7 +1220,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'placeholder'   => '1200',
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1234,7 +1235,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'rewind',
@@ -1247,7 +1248,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'loop',
@@ -1260,7 +1261,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1275,7 +1276,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'stop_on_hover',
@@ -1288,7 +1289,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1304,7 +1305,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'navigation_position',
@@ -1317,7 +1318,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('topright' => __('Top-right', 'related-post'),), //'middle'=>__('Middle','related-post') , 'middle-fixed'=>__('Middle-fixed','related-post')
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1332,7 +1333,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             $args = array(
@@ -1346,7 +1347,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             $args = array(
                 'id'        => 'rtl',
@@ -1359,7 +1360,7 @@ if (!function_exists('related_post_settings_content_slider')) {
                 'args'        => array('true' => __('True', 'related-post'), 'false' => __('False', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1380,7 +1381,7 @@ if (!function_exists('related_post_settings_content_stats')) {
     function related_post_settings_content_stats($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -1391,8 +1392,8 @@ if (!function_exists('related_post_settings_content_stats')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Post query settings', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Choose post query settings.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Post query settings', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Choose post query settings.', 'related-post'); ?></p>
 
             <?php
 
@@ -1409,7 +1410,7 @@ if (!function_exists('related_post_settings_content_stats')) {
                 'args'        => array('enable' => __('Enable', 'related-post'), 'disable' => __('Disable', 'related-post')),
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             ob_start();
@@ -1433,7 +1434,7 @@ if (!function_exists('related_post_settings_content_stats')) {
                         $title = get_the_title($to_id);
                 ?>
                         <li>
-                            <span><?php echo $count_to_id[$i]['to_id']; ?></span> <a href="#"><?php echo $title; ?></a>
+                            <span><?php echo esc_html($count_to_id[$i]['to_id']); ?></span> <a href="#"><?php echo esc_html($title); ?></a>
                         </li>
                     <?php
                         $i++;
@@ -1442,7 +1443,7 @@ if (!function_exists('related_post_settings_content_stats')) {
                 else :
                     ?>
                     <li>
-                        No stats yet.
+                        <?php esc_html_e("No stats yet.", 'related-post') ?>
                     </li>
                 <?php
 
@@ -1463,7 +1464,7 @@ if (!function_exists('related_post_settings_content_stats')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             ?>
@@ -1498,14 +1499,14 @@ if (!function_exists('related_post_settings_tabs_right_panel_general')) {
 
     ?>
         <h3>Help & Support</h3>
-        <p><?php echo __('Ask question for free on our forum and get quick reply from our expert team members.', 'related-post'); ?></p>
-        <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'related-post'); ?></a>
+        <p><?php esc_html_e('Ask question for free on our forum and get quick reply from our expert team members.', 'related-post'); ?></p>
+        <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php esc_html_e('Create support ticket', 'related-post'); ?></a>
 
-        <p><?php echo __('Read our documentation before asking your question.', 'related-post'); ?></p>
-        <a class="button" href="https://www.pickplugins.com/documentation/related-post/"><?php echo __('Documentation', 'related-post'); ?></a>
+        <p><?php esc_html_e('Read our documentation before asking your question.', 'related-post'); ?></p>
+        <a class="button" href="https://www.pickplugins.com/documentation/related-post/"><?php esc_html_e('Documentation', 'related-post'); ?></a>
 
-        <p><?php echo __('Watch video tutorials.', 'related-post'); ?></p>
-        <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94aXEA_fguVn2ZpdizEeNmsx"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'related-post'); ?></a>
+        <p><?php esc_html_e('Watch video tutorials.', 'related-post'); ?></p>
+        <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94aXEA_fguVn2ZpdizEeNmsx"><i class="fab fa-youtube"></i> <?php esc_html_e('All tutorials', 'related-post'); ?></a>
 
         <ul>
             <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=9SZKa0QYgsc">How to install & setup</a></li>
@@ -1537,7 +1538,7 @@ add_action('related_post_settings_content_scripts', 'related_post_settings_conte
 if (!function_exists('related_post_settings_content_scripts')) {
     function related_post_settings_content_scripts($tab)
     {
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
         $related_post_settings = get_option('related_post_settings');
 
@@ -1547,8 +1548,8 @@ if (!function_exists('related_post_settings_content_scripts')) {
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Custom scripts and CSS', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Add your custom CSS and scripts here.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Custom scripts and CSS', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Add your custom CSS and scripts here.', 'related-post'); ?></p>
 
 
 
@@ -1566,7 +1567,7 @@ if (!function_exists('related_post_settings_content_scripts')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1580,7 +1581,7 @@ if (!function_exists('related_post_settings_content_scripts')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
@@ -1600,12 +1601,12 @@ if (!function_exists('related_post_settings_content_help_support')) {
     function related_post_settings_content_help_support($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Get support', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Use following to get help and support from our expert team.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Get support', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Use following to get help and support from our expert team.', 'related-post'); ?></p>
 
             <?php
 
@@ -1613,14 +1614,14 @@ if (!function_exists('related_post_settings_content_help_support')) {
             ob_start();
             ?>
 
-            <p><?php echo __('Shortcode for php file', 'related-post'); ?></p>
+            <p><?php esc_html_e('Shortcode for php file', 'related-post'); ?></p>
             <textarea onclick="this.select()">&#60;?php echo do_shortcode( '&#91;related_post post_ids="1752,1743"&#93;' ); ?&#62;</textarea>
-            <p class="description"><?php echo __('Shortcode inside loop by dynamic post id you can use anywhere inside loop on .php files.', 'related-post'); ?></p>
+            <p class="description"><?php esc_html_e('Shortcode inside loop by dynamic post id you can use anywhere inside loop on .php files.', 'related-post'); ?></p>
 
-            <p><?php echo __('Short-code for content', 'related-post'); ?></p>
+            <p><?php esc_html_e('Short-code for content', 'related-post'); ?></p>
             <textarea onclick="this.select()">[related_post post_ids="1752,1743"]</textarea>
 
-            <p class="description"><?php echo __('Short-code inside content for fixed post id you can use anywhere inside content.', 'related-post'); ?></p>
+            <p class="description"><?php esc_html_e('Short-code inside content for fixed post id you can use anywhere inside content.', 'related-post'); ?></p>
             <?php
 
             $html = ob_get_clean();
@@ -1635,21 +1636,21 @@ if (!function_exists('related_post_settings_content_help_support')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
 
             ob_start();
             ?>
 
-            <p><?php echo __('Ask question for free on our forum and get quick reply from our expert team members.', 'related-post'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'related-post'); ?></a>
+            <p><?php esc_html_e('Ask question for free on our forum and get quick reply from our expert team members.', 'related-post'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php esc_html_e('Create support ticket', 'related-post'); ?></a>
 
-            <p><?php echo __('Read our documentation before asking your question.', 'related-post'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/documentation/related-post/"><?php echo __('Documentation', 'related-post'); ?></a>
+            <p><?php esc_html_e('Read our documentation before asking your question.', 'related-post'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/documentation/related-post/"><?php esc_html_e('Documentation', 'related-post'); ?></a>
 
-            <p><?php echo __('Watch video tutorials.', 'related-post'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94aXEA_fguVn2ZpdizEeNmsx"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'related-post'); ?></a>
+            <p><?php esc_html_e('Watch video tutorials.', 'related-post'); ?></p>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94aXEA_fguVn2ZpdizEeNmsx"><i class="fab fa-youtube"></i> <?php esc_html_e('All tutorials', 'related-post'); ?></a>
 
             <ul>
                 <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=9SZKa0QYgsc">How to install & setup</a></li>
@@ -1680,7 +1681,7 @@ if (!function_exists('related_post_settings_content_help_support')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             ob_start();
@@ -1705,7 +1706,7 @@ if (!function_exists('related_post_settings_content_help_support')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
             ?>
 
@@ -1725,13 +1726,13 @@ if (!function_exists('related_post_settings_content_buy_pro')) {
     function related_post_settings_content_buy_pro($tab)
     {
 
-        $pickp_settings_tabs_field = new pickp_settings_tabs_field();
+        $settings_tabs_field = new settings_tabs_field();
 
 
     ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Get Premium', 'related-post'); ?></div>
-            <p class="description section-description"><?php echo __('Thansk for using our plugin, if you looking for some advance feature please buy premium version.', 'related-post'); ?></p>
+            <div class="section-title"><?php esc_html_e('Get Premium', 'related-post'); ?></div>
+            <p class="description section-description"><?php esc_html_e('Thansk for using our plugin, if you looking for some advance feature please buy premium version.', 'related-post'); ?></p>
 
             <?php
 
@@ -1739,8 +1740,8 @@ if (!function_exists('related_post_settings_content_buy_pro')) {
             ob_start();
             ?>
 
-            <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'related-post'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/item/related-post-for-wordpress/"><?php echo __('Buy premium', 'related-post'); ?></a>
+            <p><?php esc_html_e('If you love our plugin and want more feature please consider to buy pro version.', 'related-post'); ?></p>
+            <a class="button" href="https://www.pickplugins.com/item/related-post-for-wordpress/"><?php esc_html_e('Buy premium', 'related-post'); ?></a>
 
             <h2>See the differences</h2>
 
@@ -1932,7 +1933,7 @@ if (!function_exists('related_post_settings_content_buy_pro')) {
                 <tr>
                     <td class="col-features">Buy now</td>
                     <td> </td>
-                    <td><a class="button" href="https://www.pickplugins.com/item/related-post-for-wordpress/"><?php echo __('Buy premium', 'related-post'); ?></a></td>
+                    <td><a class="button" href="https://www.pickplugins.com/item/related-post-for-wordpress/"><?php esc_html_e('Buy premium', 'related-post'); ?></a></td>
                 </tr>
 
             </table>
@@ -1953,7 +1954,7 @@ if (!function_exists('related_post_settings_content_buy_pro')) {
 
             );
 
-            $pickp_settings_tabs_field->generate_field($args);
+            $settings_tabs_field->generate_field($args);
 
 
             ?>

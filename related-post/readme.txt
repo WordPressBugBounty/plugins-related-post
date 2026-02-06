@@ -1,10 +1,10 @@
-=== Related Posts, Inline Related Posts, Contextual Related Posts, Related Content By PickPlugins ===
+=== Related Posts By PickPlugins ===
 	Contributors: PickPlugins
 	Donate link: http://pickplugins.com
 	Tags: related post, related posts, related content, inline related post,  similar posts
 	Requires at least: 3.8
-	Tested up to: 6.8
-	Stable tag: 2.0.63
+	Tested up to: 6.9
+	Stable tag: 2.0.66
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,26 +13,17 @@
 == Description ==
 
 
-**Related Post** plugin is one of the most powerful plugin to display related post under post content on single post or page or custom post types, its also support to display related post under excerpt on archive pages. you can conditionally choose to display related content under excerpt or content by archive pages like tag, category, date, author, search page and custom taxonomy pages.
+**Related Posts By PickPlugins** plugin is one of the most useful plugin to display related post under post content on single post or page or custom post types, its also support to display related post under excerpt on archive pages. you can conditionally choose to display related content under excerpt or content by archive pages like tag, category, date, author, search page and custom taxonomy pages.
 
 ### Related Post by http://pickplugins.com
 
 * [Documentation! &raquo;](https://www.pickplugins.com/documentation/related-post/?ref=wordpress.org)
-* [Live Demo! &raquo;](https://www.pickplugins.com/demo/related-post/?ref=wordpress.org)
+* [Live Demo! &raquo;](https://demo.pickplugins.com/related-post/?ref=wordpress.org)
 * [Buy Pro! &raquo;](https://www.pickplugins.com/item/related-post-for-wordpress/?ref=wordpress.org)
 
 **Tutorials**
 
 * [How to install & setup](https://www.youtube.com/watch?v=9SZKa0QYgsc)
-* [Display on archive pages](https://www.youtube.com/watch?v=tXBLwC3PQBI)
-* [Customize elements](https://www.youtube.com/watch?v=_kWh4mP-eso)
-* [Manually selected post](https://www.youtube.com/watch?v=5G7o_zFKUhE)
-* [Customize column count](https://www.youtube.com/watch?v=qudCJcqjlCk)
-* [Related post as slider layout](https://www.youtube.com/watch?v=KUtBCyFoARk)
-* [Related posts as list layout](https://www.youtube.com/watch?v=uo2v9U9kUCc)
-* [Display on popups (Premium) ](https://www.youtube.com/watch?v=siMFvhy95Wo)
-* [Display custom html after elements (Premium) ](https://www.youtube.com/watch?v=pztzF9R2yRQ)
-* [Customize link target (Premium) ](https://www.youtube.com/watch?v=qFZPMoqEHxs)
 
 
 **Related post under every paragraph**
@@ -114,10 +105,10 @@ You can display related post any where via shortcode by using on your theme file
 
 == Installation ==
 
-1. Install as regular WordPress plugin.<br />
-2. Go your plugin setting via WordPress dashboard and find "<strong>Related Post</strong>" activate it.<br />
+1. Install as regular WordPress plugin.
+2. Go your plugin setting via WordPress dashboard and find "Related Post" activate it.
 
-After activate plugin you will see "Related Post" menu at left side on WordPress dashboard.<br />
+After activate plugin you will see "Related Post" menu at left side on WordPress dashboard.
 
 short-code inside content for fixed post id you can use anywhere inside content.
 
@@ -143,6 +134,16 @@ echo do_shortcode( '[related_post post_id=""]' );
 
 
 == Changelog ==
+
+	= 2.0.66 =
+    * 2025-12-22 fix - Settings page broken issue fixed.
+
+	= 2.0.65 =
+    * 2025-12-05 fix - Latest WP compatibility issue check.
+
+	= 2.0.64 =
+    * 2025-11-25 fix - Escaping issue fixed. 
+    * 2025-11-25 fix - Update Demo URL. 
 
 	= 2.0.63 =
     * 2025-07-05 add - Manually selecetd posts query option update to publish only and limit -1

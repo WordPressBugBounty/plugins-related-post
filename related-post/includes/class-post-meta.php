@@ -35,7 +35,6 @@ class class_related_post_post_meta
                     $manual_post_types[] = $index;
                 }
             }
-
         }
 
 
@@ -92,14 +91,11 @@ class class_related_post_post_meta
                     <div class="item">
                         <span class="remove"><i class="fas fa-times"></i></span>
                         <span class="move"><i class="fas fa-sort"></i></span>
-                        <span class="title"><?php echo $post_title; ?></span>
-                        <input type="hidden" name="related_post_ids[]" value="<?php echo $post_id; ?>" />
+                        <span class="title"><?php esc_html($post_title); ?></span>
+                        <input type="hidden" name="related_post_ids[]" value="<?php echo esc_attr($post_id); ?>" />
 
                     </div>
                 <?php
-
-
-
 
                     }
 
@@ -125,9 +121,9 @@ class class_related_post_post_meta
             </script>
 
             <br>
-            <input placeholder="Start typing..." type="text" class="related_post_get_ids" post_id="<?php echo $post->ID; ?>" name="related_post_get_ids" value="" />
+            <input placeholder="Start typing..." type="text" class="related_post_get_ids" post_id="<?php echo esc_attr($post->ID); ?>" name="related_post_get_ids" value="" />
             <br><br>
-            <label><input type="checkbox" id="any_posttypes" name="any_posttypes" value="any">Any post types</label>
+            <label><input type="checkbox" id="any_posttypes" name="any_posttypes" value="any"><?php esc_html_e("Any post types", 'related-post') ?></label>
 
             <div class="suggest-post-list">
 

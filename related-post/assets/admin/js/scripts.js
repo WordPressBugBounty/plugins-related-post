@@ -20,7 +20,6 @@ jQuery(document).ready(function ($) {
 		title = $(this).val();
 		any_posttypes = $('#any_posttypes:checked').val();
 
-		console.log(any_posttypes);
 
 
 		$.ajax({

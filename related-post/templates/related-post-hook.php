@@ -259,7 +259,7 @@ function related_post_loop_item_element_post_title($loop_post_id, $elementData)
 
 ?>
 
-  <a class="title post_title" <?php echo apply_filters('related_post_element_link_attrs', '', $elementData); ?> title="<?php echo esc_attr($post_title); ?>" href="<?php echo esc_url_raw($post_link); ?>">
+  <a class="title post_title" <?php echo esc_attr(apply_filters('related_post_element_link_attrs', '', $elementData)); ?> title="<?php echo esc_attr($post_title); ?>" href="<?php echo esc_url($post_link); ?>">
     <?php
     if (!empty($icon)) :
     ?>
@@ -297,7 +297,7 @@ function related_post_loop_item_element_post_thumb($loop_post_id, $elementData)
 
 ?>
   <div class="thumb post_thumb">
-    <a <?php echo apply_filters('related_post_element_link_attrs', '', $elementData); ?> title="<?php echo esc_attr($post_title); ?>" href="<?php echo esc_url_raw($post_link); ?>">
+    <a <?php echo esc_attr(apply_filters('related_post_element_link_attrs', '', $elementData)); ?> title="<?php echo esc_attr($post_title); ?>" href="<?php echo esc_url($post_link); ?>">
 
       <?php
       if (get_the_post_thumbnail($loop_post_id, $thumb_size)) :
@@ -307,7 +307,7 @@ function related_post_loop_item_element_post_thumb($loop_post_id, $elementData)
       else :
 
       ?>
-        <img src="<?php echo esc_url_raw($default_img); ?>" title="<?php echo esc_attr($post_title); ?>" alt="<?php echo esc_attr($post_title); ?>">
+        <img src="<?php echo esc_url($default_img); ?>" title="<?php echo esc_attr($post_title); ?>" alt="<?php echo esc_attr($post_title); ?>">
 
       <?php
 
@@ -342,7 +342,7 @@ function related_post_loop_item_element_post_excerpt($loop_post_id, $elementData
   $post = get_post($loop_post_id);
   $post_excerpt = $post->post_excerpt;
   $post_content = $post->post_content;
-  $post_excerpt = !empty($post_excerpt) ? strip_tags($post_excerpt) : strip_tags($post_content);
+  $post_excerpt = !empty($post_excerpt) ? wp_strip_all_tags($post_excerpt) : wp_strip_all_tags($post_content);
   $post_excerpt = wp_trim_words($post_excerpt, $word_count, ' <a ' . apply_filters('related_post_element_link_attrs', '', $elementData) . ' class="read-more" href="' . $post_link . '"> ' . $read_more_text . '</a>');
 
 
@@ -388,7 +388,8 @@ function related_post_main_css($atts)
 
   <script>
     <?php if (!empty($custom_js)) : ?>
-      <?php echo $custom_js; ?>
+      <?php echo esc_js($custom_js);
+      ?>
     <?php endif; ?>
   </script>
   <style>
@@ -412,36 +413,36 @@ function related_post_main_css($atts)
       <?php endif; ?>
     }
 
-    <?php if (!empty($headline_text_custom_css)) : ?><?php echo esc_attr($headline_text_custom_css); ?><?php endif; ?><?php if (!empty($custom_css)) : ?><?php echo $custom_css; ?><?php endif; ?><?php
+    <?php if (!empty($headline_text_custom_css)) : ?><?php echo esc_attr($headline_text_custom_css); ?><?php endif; ?><?php if (!empty($custom_css)) : ?><?php echo esc_html($custom_css); ?><?php endif; ?><?php
 
 
 
-                                                                                                                                                                                                  if (!empty($elements)) :
-                                                                                                                                                                                                    foreach ($elements as $elementIndex  => $elementData) {
+                                                                                                                                                                                                            if (!empty($elements)) :
+                                                                                                                                                                                                              foreach ($elements as $elementIndex  => $elementData) {
 
-                                                                                                                                                                                                      $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '14px';
-                                                                                                                                                                                                      $font_color = isset($elementData['font_color']) ? $elementData['font_color'] : '#999';
-                                                                                                                                                                                                      $margin = isset($elementData['margin']) ? $elementData['margin'] : '10px';
-                                                                                                                                                                                                      $padding = isset($elementData['padding']) ? $elementData['padding'] : '0px';
-                                                                                                                                                                                                      $line_height = isset($elementData['line_height']) ? $elementData['line_height'] : '';
+                                                                                                                                                                                                                $font_size = isset($elementData['font_size']) ? $elementData['font_size'] : '14px';
+                                                                                                                                                                                                                $font_color = isset($elementData['font_color']) ? $elementData['font_color'] : '#999';
+                                                                                                                                                                                                                $margin = isset($elementData['margin']) ? $elementData['margin'] : '10px';
+                                                                                                                                                                                                                $padding = isset($elementData['padding']) ? $elementData['padding'] : '0px';
+                                                                                                                                                                                                                $line_height = isset($elementData['line_height']) ? $elementData['line_height'] : '';
 
-                                                                                                                                                                                                      $custom_css = isset($elementData['custom_css']) ? $elementData['custom_css'] : '';
+                                                                                                                                                                                                                $custom_css = isset($elementData['custom_css']) ? $elementData['custom_css'] : '';
 
 
-                                                                                                                                                                                                      if ($elementIndex == 'post_thumb') {
-                                                                                                                                                                                                        $max_height = isset($elementData['max_height']) ? $elementData['max_height'] : '';
-                                                                                                                                                                                                  ?><?php echo '.related-post .post-list .item .' . esc_attr($elementIndex); ?> {
+                                                                                                                                                                                                                if ($elementIndex == 'post_thumb') {
+                                                                                                                                                                                                                  $max_height = isset($elementData['max_height']) ? $elementData['max_height'] : '';
+                                                                                                                                                                                                            ?><?php echo '.related-post .post-list .item .' . esc_attr($elementIndex); ?> {
       <?php if (!empty($max_height)) : ?>max-height: <?php echo esc_attr($max_height); ?>;
       <?php endif; ?><?php if (!empty($margin)) : ?>margin: <?php echo esc_attr($margin); ?>;
       <?php endif; ?><?php if (!empty($padding)) : ?>padding: <?php echo esc_attr($padding); ?>;
       <?php endif; ?><?php if (!empty($line_height)) : ?>line-height: <?php echo esc_attr($line_height); ?>;
       <?php endif; ?>display: block;
-      <?php echo $custom_css; ?>
+      <?php echo esc_html($custom_css); ?>
     }
 
     <?php
 
-                                                                                                                                                                                                      } elseif ($elementIndex == 'post_title') {
+                                                                                                                                                                                                                } elseif ($elementIndex == 'post_title') {
 
     ?><?php echo '.related-post .post-list .item .' . esc_attr($elementIndex); ?> {
       <?php if (!empty($font_size)) : ?>font-size: <?php echo esc_attr($font_size); ?>;
@@ -451,12 +452,12 @@ function related_post_main_css($atts)
       <?php endif; ?><?php if (!empty($line_height)) : ?>line-height: <?php echo esc_attr($line_height); ?>;
       <?php endif; ?>display: block;
       text-decoration: none;
-      <?php echo $custom_css; ?>
+      <?php echo esc_html($custom_css); ?>
     }
 
     <?php
 
-                                                                                                                                                                                                      } elseif ($elementIndex == 'post_excerpt') {
+                                                                                                                                                                                                                } elseif ($elementIndex == 'post_excerpt') {
     ?><?php echo '.related-post .post-list .item .' . esc_attr($elementIndex); ?> {
       <?php if (!empty($font_size)) : ?>font-size: <?php echo esc_attr($font_size); ?>;
       <?php endif; ?><?php if (!empty($font_color)) : ?>color: <?php echo esc_attr($font_color); ?>;
@@ -465,15 +466,15 @@ function related_post_main_css($atts)
       <?php endif; ?><?php if (!empty($line_height)) : ?>line-height: <?php echo esc_attr($line_height); ?>;
       <?php endif; ?>display: block;
       text-decoration: none;
-      <?php echo $custom_css; ?>
+      <?php echo esc_html($custom_css); ?>
     }
 
     <?php
-                                                                                                                                                                                                      } else {
-                                                                                                                                                                                                        do_action('related_post_element_css_' . $elementIndex, $elementData);
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                  endif;
+                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                  do_action('related_post_element_css_' . $elementIndex, $elementData);
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                            endif;
 
     ?><?php
 

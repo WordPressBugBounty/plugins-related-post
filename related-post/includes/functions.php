@@ -278,7 +278,7 @@ function related_post_count_stats()
     if ($enable_stats != 'enable') return;
 
     $gmt_offset = get_option('gmt_offset');
-    $date = date('Y-m-d', strtotime('+' . $gmt_offset . ' hour'));
+    $date = wp_date('Y-m-d', strtotime('+' . $gmt_offset . ' hour'));
 
 
     if (is_singular() && !empty($_GET['related_post_from'])) {
@@ -433,10 +433,10 @@ function related_post_ajax_get_post_ids()
             $post_title = get_the_title();
 
 ?>
-            <div post_id="<?php echo $post_id; ?>" post_title="<?php echo $post_title; ?>" class="item">
+            <div post_id="<?php echo esc_attr($post_id); ?>" post_title="<?php echo esc_attr($post_title); ?>" class="item">
                 <span class="icon-plus"><i class="far fa-plus-square"></i></span>
                 <span class="icon-add"><i class="fas fa-plus-square"></i></span>
-                <span class="title-text"><?php echo $post_title; ?></span>
+                <span class="title-text"><?php echo esc_html($post_title); ?></span>
             </div>
 <?php
 

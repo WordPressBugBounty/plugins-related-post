@@ -8,6 +8,7 @@ $related_post_settings_tab = array();
 
 $related_post_settings_tab[] = array(
     'id' => 'general',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s General', 'related-post'), '<i class="fas fa-list-ul"></i>'),
     'priority' => 1,
     'active' => ($current_tab == 'general') ? true : false,
@@ -16,6 +17,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'query',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Query', 'related-post'), '<i class="fas fa-filter"></i>'),
     'priority' => 2,
     'active' => ($current_tab == 'query') ? true : false,
@@ -23,6 +25,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'style',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Style', 'related-post'), '<i class="fas fa-palette"></i>'),
     'priority' => 3,
     'active' => ($current_tab == 'style') ? true : false,
@@ -30,6 +33,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'elements',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Elements', 'related-post'), '<i class="fab fa-buffer"></i>'),
     'priority' => 4,
     'active' => ($current_tab == 'elements') ? true : false,
@@ -37,6 +41,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'slider',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Slider', 'related-post'), '<i class="fas fa-photo-video"></i>'),
     'priority' => 5,
     'active' => ($current_tab == 'slider') ? true : false,
@@ -44,6 +49,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'stats',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Stats', 'related-post'), '<i class="fas fa-tachometer-alt"></i>'),
     'priority' => 6,
     'active' => ($current_tab == 'stats') ? true : false,
@@ -52,6 +58,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'scripts',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Scripts', 'related-post'), '<i class="fas fa-code"></i>'),
     'priority' => 6,
     'active' => ($current_tab == 'scripts') ? true : false,
@@ -59,6 +66,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'help_support',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Help & Support', 'related-post'), '<i class="fas fa-hands-helping"></i>'),
     'priority' => 7,
     'active' => ($current_tab == 'help_support') ? true : false,
@@ -66,6 +74,7 @@ $related_post_settings_tab[] = array(
 
 $related_post_settings_tab[] = array(
     'id' => 'buy_pro',
+    /* translators: %s: Icon HTML */
     'title' => sprintf(__('%s Buy Pro', 'related-post'), '<i class="fas fa-store"></i>'),
     'priority' => 8,
     'active' => ($current_tab == 'buy_pro') ? true : false,
@@ -79,8 +88,8 @@ foreach ($related_post_settings_tab as $page_key => $tab) $tabs_sorted[$page_key
 array_multisort($tabs_sorted, SORT_ASC, $related_post_settings_tab);
 
 
-$pickp_settings_tabs_field = new pickp_settings_tabs_field();
-$pickp_settings_tabs_field->admin_scripts();
+$settings_tabs_field = new settings_tabs_field();
+$settings_tabs_field->admin_scripts();
 
 
 $review_status = isset($_GET['review_status']) ? sanitize_text_field($_GET['review_status']) : '';
@@ -90,19 +99,21 @@ $related_post_settings = get_option('related_post_settings');
 ?>
 <div class="wrap">
     <div id="icon-tools" class="icon32"><br></div>
-    <h2><?php echo sprintf(__('%s Settings', 'related-post'), related_post_plugin_name) ?></h2>
+    <h2><?php
+        /* translators: %s: Icon HTML */
+        echo esc_html(sprintf(__('%s Settings', 'related-post'), related_post_plugin_name)); ?></h2>
 
 
     <?php
     $gmt_offset = get_option('gmt_offset');
-    $current_date = date('Y-m-d H:i:s', strtotime('+' . $gmt_offset . ' hour'));
+    $current_date = wp_date('Y-m-d H:i:s', strtotime('+' . $gmt_offset . ' hour'));
     //echo '<pre>'.var_export($current_date, true).'</pre>';
 
 
     if ($review_status == 'remind_later'):
 
         $related_post_info['review_status'] = 'remind_later';
-        $related_post_info['remind_date'] = date('Y-m-d H:i:s', strtotime('+30 days'));
+        $related_post_info['remind_date'] = wp_date('Y-m-d H:i:s', strtotime('+30 days'));
 
 
     ?>
@@ -125,7 +136,7 @@ $related_post_settings = get_option('related_post_settings');
 
 
 
-    <form method="post" action="<?php echo str_replace('%7E', '~', esc_url_raw($_SERVER['REQUEST_URI'])); ?>">
+    <form method="post" action="<?php echo esc_url(str_replace('%7E', '~', ($_SERVER['REQUEST_URI']))); ?>">
         <input type="hidden" name="related_post_hidden" value="Y">
         <input type="hidden" name="tab" value="<?php echo esc_attr($current_tab); ?>">
 
@@ -145,7 +156,7 @@ $related_post_settings = get_option('related_post_settings');
 
         ?>
                 <div class="updated notice  is-dismissible">
-                    <p><strong><?php _e('Changes Saved.', 'related-post'); ?></strong></p>
+                    <p><strong><?php esc_html_e('Changes Saved.', 'related-post'); ?></strong></p>
                 </div>
 
         <?php
@@ -231,7 +242,7 @@ $related_post_settings = get_option('related_post_settings');
             <div class="clear clearfix"></div>
             <p class="submit">
                 <?php wp_nonce_field('related_post_nonce'); ?>
-                <input class="button button-primary" type="submit" name="Submit" value="<?php _e('Save Changes', 'related-post'); ?>" />
+                <input class="button button-primary" type="submit" name="Submit" value="<?php esc_html_e('Save Changes', 'related-post'); ?>" />
             </p>
 
         </div>
