@@ -3,7 +3,7 @@
 	Donate link: http://pickplugins.com
 	Tags: related post, related posts, related content, inline related post,  similar posts
 	Requires at least: 3.8
-	Tested up to: 6.9
+	Tested up to: 7.0
 	Stable tag: 2.0.66
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
